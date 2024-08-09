@@ -1,0 +1,24 @@
+Helpful link for installing tensorflow (with GPU acceleration) on Mac
+
+I have confirmed that the second solution at the very bottom does work!
+
+That is, after deleting and reinstalling for more than 4 times lmao...
+
+https://stackoverflow.com/questions/72964800/what-is-the-proper-way-to-install-tensorflow-on-apple-m1-in-2022
+
+`conda config --add channels conda-forge
+conda config --set channel_priority strict 
+ 
+conda create -y --name cv
+conda activate cv
+conda install -y -c apple tensorflow-deps==2.10.0
+python -m pip install tensorflow-macos==2.10.0
+python -m pip install tensorflow-metal==0.6.0
+
+python --version
+conda list|grep -E '(tensorflow|numpy)'`
+
+Apple provided this simple test to verify if it is working or not: https://developer.apple.com/metal/tensorflow-plugin/
+
+If the above way is not clear this also works: https://github.com/deganza/Install-TensorFlow-on-Mac-M1-GPU/blob/main/Install-TensorFlow-on-Mac-M1-GPU.ipynb 
+
